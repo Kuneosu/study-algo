@@ -20,8 +20,6 @@ def solution(polynomial):
         answer = n_num
     elif n_num == '0':
         answer = x_num
-    elif x_num =='0x' and n_num =='0':
-        answer = '0'
     else:
         answer = x_num+' + '+n_num
             
