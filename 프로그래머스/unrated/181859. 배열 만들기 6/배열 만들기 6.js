@@ -1,20 +1,13 @@
 function solution(arr) {
-    stk = [];
-    for(let i = 0;i<arr.length;i++){
-        if (stk.length === 0) {
+    let stk = [];
+    for(let i=0;i<arr.length;i++){
+        if(stk.length===0){
+            stk.push(arr[i]);
+        }else if(arr[i]===stk[stk.length-1]){
+            stk.pop();
+        }else{
             stk.push(arr[i]);
         }
-        else {
-            if(stk.at(-1) === arr[i]){
-                stk.pop();
-            }
-            else{
-                stk.push(arr[i]);
-            }
-        }
     }
-    if (stk.length === 0) {
-            return [-1]
-    }
-    return stk;
+    return stk.length>0 ? stk : [-1];
 }
