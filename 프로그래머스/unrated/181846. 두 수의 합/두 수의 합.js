@@ -1,4 +1,6 @@
 function solution(a, b) {
-    let answer = BigInt(a)+BigInt(b)
-    return answer.toString();
+    const int_a = BigInt(a);
+    const int_b = BigInt(b);
+    const sum_str = BigInt(int_a+int_b);
+    return sum_str.toString();
 }
