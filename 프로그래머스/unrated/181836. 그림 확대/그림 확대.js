@@ -1,15 +1,16 @@
 function solution(picture, k) {
-    const answer = [];
-    for (line of picture) {
-        let new_line = "";
-        for (word of line) {
-            for (let i = 0; i < k; i++) {
-                new_line += word;
+    let result = [];
+    for(let i=0;i<picture.length;i++){
+        const pre_word = picture[i];
+        let word = "";
+        for(let j=0;j<picture[i].length;j++){
+            for(let x=0;x<k;x++){
+                word += pre_word[j];
             }
         }
-        for (let i = 0; i < k; i++) {
-            answer.push(new_line);
+        for(let x=0;x<k;x++){
+            result.push(word);
         }
     }
-    return answer;
+    return result;
 }
