@@ -1,2 +1,2 @@
-const solution = (arr,k) => k%2===0 ? arr.map((a)=>a+k) : arr.map((a)=>a*k) ;
+const solution = (arr,k) => arr.map((a)=> k%2===0 ? a+k : a*k);
                                                 
