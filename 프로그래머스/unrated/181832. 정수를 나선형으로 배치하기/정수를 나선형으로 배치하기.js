@@ -1,49 +1,29 @@
-function create2DArray(rows, columns) {
-    var arr = new Array(rows);
-    for (var i = 0; i < rows; i++) {
-        arr[i] = new Array(columns);
+function solution(n) {
+  const result = new Array(n).fill().map(() => new Array(n).fill(0));
+  let left = 0, right = n - 1, top = 0, bottom = n - 1;
+  let num = 1;
+
+  while (left <= right && top <= bottom) {
+    for (let i = left; i <= right; i++) {
+      result[top][i] = num++;
     }
-    return arr;
-}
+    top++;
 
-const solution = (n) => {
-    let arr = create2DArray(n, n);
-
-    let leftCol = 0;
-    let rightCol = n - 1;
-    let topRow = 0;
-    let bottomRow = n - 1;
-    let num = 1;
-    while (topRow <= bottomRow && leftCol <= rightCol) {
-        for (let i = leftCol; i <= rightCol; i++) {
-            arr[topRow][i] = num;
-            num++;
-        }
-        topRow++;
-
-        for (let j = topRow; j <= bottomRow; j++) {
-            arr[j][rightCol] = num;
-            num++;
-        }
-        rightCol--;
-
-        if (topRow <= bottomRow) {
-            for (let x = rightCol; x >= leftCol; x--) {
-                arr[bottomRow][x] = num;
-                num++;
-            }
-            bottomRow--;
-        }
-
-        if (rightCol >= leftCol) {
-            for (let y = bottomRow; y >= topRow; y--) {
-                arr[y][leftCol] = num;
-                num++;
-            }
-            leftCol++;
-        }
-
+    for (let i = top; i <= bottom; i++) {
+      result[i][right] = num++;
     }
-    return arr;
+    right--;
 
+    for (let i = right; i >= left; i--) {
+      result[bottom][i] = num++;
+    }
+    bottom--;
+
+    for (let i = bottom; i >= top; i--) {
+      result[i][left] = num++;
+    }
+    left++;
+  }
+
+  return result;
 }
