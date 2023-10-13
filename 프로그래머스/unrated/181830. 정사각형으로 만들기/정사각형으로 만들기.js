@@ -1,24 +1,21 @@
-function solution(arr) {
-    let answer = arr;
-    let row = answer.length;
-    let col = answer[0].length;
+const solution = (arr) => {
+    let row = arr.length;
+    let col = arr[0].length;
+
     if (row > col) {
         for (let i = 0; i < row; i++) {
-            while (answer[i].length < row) {
-                answer[i].push(0);
+            for(let j=0; j<row-col;j++){
+                arr[i].push(0);
             }
         }
-    }
-    else if (col > row) {
-        let new_item = []
-        for (let i = 0; i < col; i++) {
-            new_item.push(0);
-        }
-        while (answer.length < col) {
-            answer.push(new_item);
+    } else if (row < col) {
+        let word = new Array(col);
+        word.fill(0);
+        for (let i = 0; i < col - row; i++) {
+            arr.push(word);
         }
     } else {
-        return answer;
+        return arr;
     }
-    return answer;
+    return arr;
 }
